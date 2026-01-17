@@ -1,0 +1,17 @@
+apiVersion: list.cloudflare.crossplane.io/v1alpha1
+kind: ListItem
+metadata:
+  annotations:
+    meta.upbound.io/example-id: list/v1alpha1/listitem
+  labels:
+    testing.upbound.io/example-name: example_list_item
+  name: example-list-item
+spec:
+  forProvider:
+    accountIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example
+    ip: 10.0.0.1
+    listIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example

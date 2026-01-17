@@ -1,0 +1,16 @@
+apiVersion: zerotrust.cloudflare.crossplane.io/v1alpha1
+kind: ZeroTrustRiskScoringIntegration
+metadata:
+  annotations:
+    meta.upbound.io/example-id: zerotrust/v1alpha1/zerotrustriskscoringintegration
+  labels:
+    testing.upbound.io/example-name: example_zero_trust_risk_scoring_integration
+  name: example-zero-trust-risk-scoring-integration
+spec:
+  forProvider:
+    accountIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example
+    integrationType: Okta
+    referenceId: reference_id
+    tenantUrl: https://example.com

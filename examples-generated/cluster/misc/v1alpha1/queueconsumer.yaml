@@ -1,0 +1,25 @@
+apiVersion: misc.cloudflare.crossplane.io/v1alpha1
+kind: QueueConsumer
+metadata:
+  annotations:
+    meta.upbound.io/example-id: misc/v1alpha1/queueconsumer
+  labels:
+    testing.upbound.io/example-name: example_queue_consumer
+  name: example-queue-consumer
+spec:
+  forProvider:
+    accountIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example
+    deadLetterQueue: example-queue
+    queueIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example
+    scriptName: my-consumer-worker
+    settings:
+      batchSize: 50
+      maxConcurrency: 10
+      maxRetries: 3
+      maxWaitTimeMs: 5000
+      retryDelay: 10
+    type: worker

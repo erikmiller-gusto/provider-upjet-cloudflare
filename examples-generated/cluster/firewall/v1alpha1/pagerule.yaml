@@ -1,0 +1,20 @@
+apiVersion: firewall.cloudflare.crossplane.io/v1alpha1
+kind: PageRule
+metadata:
+  annotations:
+    meta.upbound.io/example-id: firewall/v1alpha1/pagerule
+  labels:
+    testing.upbound.io/example-name: example_page_rule
+  name: example-page-rule
+spec:
+  forProvider:
+    actions:
+      forwardingUrl:
+        statusCode: 301
+        url: https://example.com/foo
+    priority: 1
+    status: active
+    target: example.com/*
+    zoneIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example

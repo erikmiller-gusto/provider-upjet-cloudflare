@@ -1,0 +1,34 @@
+apiVersion: loadbalancer.cloudflare.m.cloudflare.com/v1alpha1
+kind: LoadBalancerMonitor
+metadata:
+  annotations:
+    meta.upbound.io/example-id: loadbalancer/v1alpha1/loadbalancermonitor
+  labels:
+    testing.upbound.io/example-name: example_load_balancer_monitor
+  name: example-load-balancer-monitor
+  namespace: crossplane-system
+spec:
+  forProvider:
+    accountIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example
+    allowInsecure: true
+    consecutiveDown: 0
+    consecutiveUp: 0
+    description: Login page monitor
+    expectedBody: alive
+    expectedCodes: 2xx
+    followRedirects: true
+    header:
+      Host:
+      - example.com
+      X-App-ID:
+      - abc123
+    interval: 0
+    method: GET
+    path: /health
+    port: 0
+    probeZone: example.com
+    retries: 0
+    timeout: 0
+    type: https

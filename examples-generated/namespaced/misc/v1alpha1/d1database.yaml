@@ -1,0 +1,16 @@
+apiVersion: misc.cloudflare.m.cloudflare.com/v1alpha1
+kind: D1Database
+metadata:
+  annotations:
+    meta.upbound.io/example-id: misc/v1alpha1/d1database
+  labels:
+    testing.upbound.io/example-name: example_d1_database
+  name: example-d1-database
+  namespace: crossplane-system
+spec:
+  forProvider:
+    accountIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example
+    jurisdiction: eu
+    primaryLocationHint: wnam

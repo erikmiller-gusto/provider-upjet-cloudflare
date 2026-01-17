@@ -1,0 +1,41 @@
+apiVersion: waitingroom.cloudflare.m.cloudflare.com/v1alpha1
+kind: WaitingRoom
+metadata:
+  annotations:
+    meta.upbound.io/example-id: waitingroom/v1alpha1/waitingroom
+  labels:
+    testing.upbound.io/example-name: example_waiting_room
+  name: example-waiting-room
+  namespace: crossplane-system
+spec:
+  forProvider:
+    additionalRoutes:
+    - host: shop2.example.com
+      path: /shop2/checkout
+    cookieAttributes:
+      samesite: auto
+      secure: auto
+    cookieSuffix: abcd
+    customPageHtml: '{{#waitTimeKnown}} {{waitTime}} mins {{/waitTimeKnown}} {{^waitTimeKnown}}
+      Queue all enabled {{/waitTimeKnown}}'
+    defaultTemplateLanguage: es-ES
+    description: Production - DO NOT MODIFY
+    disableSessionRenewal: false
+    enabledOriginCommands:
+    - revoke
+    host: shop.example.com
+    jsonResponseEnabled: false
+    name: production_webinar
+    newUsersPerMinute: 200
+    path: /shop/checkout
+    queueAll: true
+    queueingMethod: fifo
+    queueingStatusCode: 202
+    sessionDuration: 1
+    suspended: true
+    totalActiveUsers: 200
+    turnstileAction: log
+    turnstileMode: "off"
+    zoneIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example

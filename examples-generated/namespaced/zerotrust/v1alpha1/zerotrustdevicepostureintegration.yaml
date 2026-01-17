@@ -1,0 +1,24 @@
+apiVersion: zerotrust.cloudflare.m.cloudflare.com/v1alpha1
+kind: ZeroTrustDevicePostureIntegration
+metadata:
+  annotations:
+    meta.upbound.io/example-id: zerotrust/v1alpha1/zerotrustdevicepostureintegration
+  labels:
+    testing.upbound.io/example-name: example_zero_trust_device_posture_integration
+  name: example-zero-trust-device-posture-integration
+  namespace: crossplane-system
+spec:
+  forProvider:
+    accountIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example
+    config:
+      apiUrl: https://as123.awmdm.com/API
+      authUrl: https://na.uemauth.vmwservices.com/connect/token
+      clientId: example client id
+      clientSecretSecretRef:
+        key: example-key
+        name: example-secret
+    interval: 10m
+    name: My Workspace One Integration
+    type: workspace_one

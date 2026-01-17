@@ -1,0 +1,15 @@
+apiVersion: zerotrust.cloudflare.m.cloudflare.com/v1alpha1
+kind: ZeroTrustGatewayCertificate
+metadata:
+  annotations:
+    meta.upbound.io/example-id: zerotrust/v1alpha1/zerotrustgatewaycertificate
+  labels:
+    testing.upbound.io/example-name: example_zero_trust_gateway_certificate
+  name: example-zero-trust-gateway-certificate
+  namespace: crossplane-system
+spec:
+  forProvider:
+    accountIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example
+    validityPeriodDays: 1826

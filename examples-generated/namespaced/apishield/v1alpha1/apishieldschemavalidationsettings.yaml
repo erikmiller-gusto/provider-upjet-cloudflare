@@ -1,0 +1,16 @@
+apiVersion: apishield.cloudflare.m.cloudflare.com/v1alpha1
+kind: APIShieldSchemaValidationSettings
+metadata:
+  annotations:
+    meta.upbound.io/example-id: apishield/v1alpha1/apishieldschemavalidationsettings
+  labels:
+    testing.upbound.io/example-name: example_api_shield_schema_validation_settings
+  name: example-api-shield-schema-validation-settings
+  namespace: crossplane-system
+spec:
+  forProvider:
+    validationDefaultMitigationAction: block
+    validationOverrideMitigationAction: none
+    zoneIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example

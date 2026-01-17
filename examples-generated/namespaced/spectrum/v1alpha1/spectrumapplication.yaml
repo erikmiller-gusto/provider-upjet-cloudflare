@@ -1,0 +1,33 @@
+apiVersion: spectrum.cloudflare.m.cloudflare.com/v1alpha1
+kind: SpectrumApplication
+metadata:
+  annotations:
+    meta.upbound.io/example-id: spectrum/v1alpha1/spectrumapplication
+  labels:
+    testing.upbound.io/example-name: example_spectrum_application
+  name: example-spectrum-application
+  namespace: crossplane-system
+spec:
+  forProvider:
+    argoSmartRouting: true
+    dns:
+      name: ssh.example.com
+      type: CNAME
+    edgeIps:
+      connectivity: all
+      type: dynamic
+    ipFirewall: false
+    originDirect:
+    - tcp://127.0.0.1:8080
+    originDns:
+      name: origin.example.com
+      ttl: 600
+      type: ""
+    originPort: 22
+    protocol: tcp/22
+    proxyProtocol: "off"
+    tls: "off"
+    trafficType: direct
+    zoneIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example

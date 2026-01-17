@@ -1,0 +1,16 @@
+apiVersion: apishield.cloudflare.crossplane.io/v1alpha1
+kind: APIShieldOperation
+metadata:
+  annotations:
+    meta.upbound.io/example-id: apishield/v1alpha1/apishieldoperation
+  labels:
+    testing.upbound.io/example-name: example_api_shield_operation
+  name: example-api-shield-operation
+spec:
+  forProvider:
+    endpoint: /api/v1/users/{var1}
+    host: www.example.com
+    method: GET
+    zoneIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example

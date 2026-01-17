@@ -1,0 +1,16 @@
+apiVersion: misc.cloudflare.crossplane.io/v1alpha1
+kind: WebAnalyticsSite
+metadata:
+  annotations:
+    meta.upbound.io/example-id: misc/v1alpha1/webanalyticssite
+  labels:
+    testing.upbound.io/example-name: example_web_analytics_site
+  name: example-web-analytics-site
+spec:
+  forProvider:
+    accountIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example
+    autoInstall: true
+    host: example.com
+    zoneTag: 023e105f4ecef8ad9ca31a8372d0c353

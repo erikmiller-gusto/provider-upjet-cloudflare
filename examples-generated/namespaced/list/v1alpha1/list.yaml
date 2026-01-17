@@ -1,0 +1,20 @@
+apiVersion: list.cloudflare.m.cloudflare.com/v1alpha1
+kind: List
+metadata:
+  annotations:
+    meta.upbound.io/example-id: list/v1alpha1/list
+  labels:
+    testing.upbound.io/example-name: example_list
+  name: example-list
+  namespace: crossplane-system
+spec:
+  forProvider:
+    accountIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example
+    description: This is a note
+    items:
+    - ip: 1.1.1.1
+    - ip: 1.1.1.2
+    kind: ip
+    name: list1

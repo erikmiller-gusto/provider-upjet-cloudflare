@@ -1,0 +1,20 @@
+apiVersion: firewall.cloudflare.m.cloudflare.com/v1alpha1
+kind: BotManagement
+metadata:
+  annotations:
+    meta.upbound.io/example-id: firewall/v1alpha1/botmanagement
+  labels:
+    testing.upbound.io/example-name: example_bot_management
+  name: example-bot-management
+  namespace: crossplane-system
+spec:
+  forProvider:
+    aiBotsProtection: block
+    cfRobotsVariant: policy_only
+    crawlerProtection: enabled
+    enableJs: true
+    fightMode: true
+    isRobotsTxtManaged: false
+    zoneIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example

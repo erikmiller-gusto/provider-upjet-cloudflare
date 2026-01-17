@@ -9,16 +9,260 @@ import (
 
 	"github.com/crossplane/upjet/v2/pkg/controller"
 
-	resource "github.com/crossplane/upjet-provider-template/internal/controller/cluster/null/resource"
-	providerconfig "github.com/crossplane/upjet-provider-template/internal/controller/cluster/providerconfig"
+	accessrule "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/access/accessrule"
+	account "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/account/account"
+	accounttoken "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/account/accounttoken"
+	apitoken "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/account/apitoken"
+	member "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/account/member"
+	apishield "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/apishield/apishield"
+	apishieldoperation "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/apishield/apishieldoperation"
+	apishieldoperationschemavalidationsettings "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/apishield/apishieldoperationschemavalidationsettings"
+	apishieldschema "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/apishield/apishieldschema"
+	apishieldschemavalidationsettings "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/apishield/apishieldschemavalidationsettings"
+	magicwangretunnel "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/argo/magicwangretunnel"
+	magicwanipsectunnel "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/argo/magicwanipsectunnel"
+	magicwanstaticroute "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/argo/magicwanstaticroute"
+	regionaltieredcache "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/argo/regionaltieredcache"
+	tieredcache "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/argo/tieredcache"
+	authenticatedoriginpulls "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/certificate/authenticatedoriginpulls"
+	authenticatedoriginpullscertificate "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/certificate/authenticatedoriginpullscertificate"
+	certificatepack "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/certificate/certificatepack"
+	customhostname "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/certificate/customhostname"
+	customhostnamefallbackorigin "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/certificate/customhostnamefallbackorigin"
+	customssl "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/certificate/customssl"
+	hostnametlssetting "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/certificate/hostnametlssetting"
+	keylesscertificate "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/certificate/keylesscertificate"
+	mtlscertificate "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/certificate/mtlscertificate"
+	origincacertificate "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/certificate/origincacertificate"
+	totaltls "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/certificate/totaltls"
+	dnsfirewall "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/dns/dnsfirewall"
+	dnsrecord "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/dns/dnsrecord"
+	emailroutingaddress "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/email/emailroutingaddress"
+	emailroutingcatchall "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/email/emailroutingcatchall"
+	emailroutingdns "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/email/emailroutingdns"
+	emailroutingrule "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/email/emailroutingrule"
+	emailroutingsettings "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/email/emailroutingsettings"
+	botmanagement "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/firewall/botmanagement"
+	filter "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/firewall/filter"
+	firewallrule "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/firewall/firewallrule"
+	leakedcredentialcheck "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/firewall/leakedcredentialcheck"
+	leakedcredentialcheckrule "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/firewall/leakedcredentialcheckrule"
+	pagerule "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/firewall/pagerule"
+	ratelimit "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/firewall/ratelimit"
+	ruleset "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/firewall/ruleset"
+	urlnormalizationsettings "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/firewall/urlnormalizationsettings"
+	useragentblockingrule "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/firewall/useragentblockingrule"
+	healthcheck "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/healthcheck/healthcheck"
+	list "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/list/list"
+	listitem "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/list/listitem"
+	loadbalancer "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/loadbalancer/loadbalancer"
+	loadbalancermonitor "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/loadbalancer/loadbalancermonitor"
+	loadbalancerpool "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/loadbalancer/loadbalancerpool"
+	logpullretention "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/logpush/logpullretention"
+	logpushjob "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/logpush/logpushjob"
+	addressmap "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/misc/addressmap"
+	byoipprefix "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/misc/byoipprefix"
+	callssfuapp "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/misc/callssfuapp"
+	callsturnapp "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/misc/callsturnapp"
+	cloudconnectorrules "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/misc/cloudconnectorrules"
+	cloudforceonerequest "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/misc/cloudforceonerequest"
+	cloudforceonerequestasset "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/misc/cloudforceonerequestasset"
+	cloudforceonerequestmessage "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/misc/cloudforceonerequestmessage"
+	cloudforceonerequestpriority "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/misc/cloudforceonerequestpriority"
+	contentscanning "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/misc/contentscanning"
+	contentscanningexpression "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/misc/contentscanningexpression"
+	d1database "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/misc/d1database"
+	hyperdriveconfig "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/misc/hyperdriveconfig"
+	observatoryscheduledtest "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/misc/observatoryscheduledtest"
+	queue "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/misc/queue"
+	queueconsumer "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/misc/queueconsumer"
+	regionalhostname "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/misc/regionalhostname"
+	snippet "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/misc/snippet"
+	snippetrules "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/misc/snippetrules"
+	turnstilewidget "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/misc/turnstilewidget"
+	web3hostname "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/misc/web3hostname"
+	webanalyticsrule "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/misc/webanalyticsrule"
+	webanalyticssite "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/misc/webanalyticssite"
+	notificationpolicy "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/notification/notificationpolicy"
+	notificationpolicywebhooks "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/notification/notificationpolicywebhooks"
+	providerconfig "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/providerconfig"
+	r2bucket "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/r2/r2bucket"
+	r2bucketcors "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/r2/r2bucketcors"
+	r2bucketlifecycle "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/r2/r2bucketlifecycle"
+	r2bucketlock "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/r2/r2bucketlock"
+	r2bucketsippy "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/r2/r2bucketsippy"
+	r2customdomain "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/r2/r2customdomain"
+	r2manageddomain "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/r2/r2manageddomain"
+	spectrumapplication "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/spectrum/spectrumapplication"
+	stream "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/stream/stream"
+	streamaudiotrack "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/stream/streamaudiotrack"
+	streamdownload "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/stream/streamdownload"
+	streamkey "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/stream/streamkey"
+	streamliveinput "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/stream/streamliveinput"
+	streamwatermark "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/stream/streamwatermark"
+	streamwebhook "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/stream/streamwebhook"
+	waitingroom "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/waitingroom/waitingroom"
+	waitingroomevent "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/waitingroom/waitingroomevent"
+	waitingroomrules "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/waitingroom/waitingroomrules"
+	waitingroomsettings "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/waitingroom/waitingroomsettings"
+	pagesdomain "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/workers/pagesdomain"
+	pagesproject "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/workers/pagesproject"
+	workerskv "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/workers/workerskv"
+	workerskvnamespace "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/workers/workerskvnamespace"
+	workersscript "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/workers/workersscript"
+	zerotrustaccessshortlivedcertificate "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/zerotrust/zerotrustaccessshortlivedcertificate"
+	zerotrustdevicemanagednetworks "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/zerotrust/zerotrustdevicemanagednetworks"
+	zerotrustdevicepostureintegration "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/zerotrust/zerotrustdevicepostureintegration"
+	zerotrustdeviceposturerule "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/zerotrust/zerotrustdeviceposturerule"
+	zerotrustdextest "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/zerotrust/zerotrustdextest"
+	zerotrustdlpcustomentry "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/zerotrust/zerotrustdlpcustomentry"
+	zerotrustdlpcustomprofile "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/zerotrust/zerotrustdlpcustomprofile"
+	zerotrustdlpentry "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/zerotrust/zerotrustdlpentry"
+	zerotrustgatewaycertificate "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/zerotrust/zerotrustgatewaycertificate"
+	zerotrustgatewaypolicy "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/zerotrust/zerotrustgatewaypolicy"
+	zerotrustgatewaysettings "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/zerotrust/zerotrustgatewaysettings"
+	zerotrustlist "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/zerotrust/zerotrustlist"
+	zerotrustriskbehavior "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/zerotrust/zerotrustriskbehavior"
+	zerotrustriskscoringintegration "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/zerotrust/zerotrustriskscoringintegration"
+	zerotrusttunnelcloudflared "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/zerotrust/zerotrusttunnelcloudflared"
+	zerotrusttunnelcloudflaredconfig "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/zerotrust/zerotrusttunnelcloudflaredconfig"
+	zone "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/zone/zone"
+	zonecachereserve "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/zone/zonecachereserve"
+	zonecachevariants "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/zone/zonecachevariants"
+	zonednssec "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/zone/zonednssec"
+	zonehold "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/zone/zonehold"
+	zonelockdown "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/zone/zonelockdown"
+	zonesetting "github.com/crossplane-contrib/provider-upjet-cloudflare/internal/controller/cluster/zone/zonesetting"
 )
 
 // Setup creates all controllers with the supplied logger and adds them to
 // the supplied manager.
 func Setup(mgr ctrl.Manager, o controller.Options) error {
 	for _, setup := range []func(ctrl.Manager, controller.Options) error{
-		resource.Setup,
+		accessrule.Setup,
+		account.Setup,
+		accounttoken.Setup,
+		apitoken.Setup,
+		member.Setup,
+		apishield.Setup,
+		apishieldoperation.Setup,
+		apishieldoperationschemavalidationsettings.Setup,
+		apishieldschema.Setup,
+		apishieldschemavalidationsettings.Setup,
+		magicwangretunnel.Setup,
+		magicwanipsectunnel.Setup,
+		magicwanstaticroute.Setup,
+		regionaltieredcache.Setup,
+		tieredcache.Setup,
+		authenticatedoriginpulls.Setup,
+		authenticatedoriginpullscertificate.Setup,
+		certificatepack.Setup,
+		customhostname.Setup,
+		customhostnamefallbackorigin.Setup,
+		customssl.Setup,
+		hostnametlssetting.Setup,
+		keylesscertificate.Setup,
+		mtlscertificate.Setup,
+		origincacertificate.Setup,
+		totaltls.Setup,
+		dnsfirewall.Setup,
+		dnsrecord.Setup,
+		emailroutingaddress.Setup,
+		emailroutingcatchall.Setup,
+		emailroutingdns.Setup,
+		emailroutingrule.Setup,
+		emailroutingsettings.Setup,
+		botmanagement.Setup,
+		filter.Setup,
+		firewallrule.Setup,
+		leakedcredentialcheck.Setup,
+		leakedcredentialcheckrule.Setup,
+		pagerule.Setup,
+		ratelimit.Setup,
+		ruleset.Setup,
+		urlnormalizationsettings.Setup,
+		useragentblockingrule.Setup,
+		healthcheck.Setup,
+		list.Setup,
+		listitem.Setup,
+		loadbalancer.Setup,
+		loadbalancermonitor.Setup,
+		loadbalancerpool.Setup,
+		logpullretention.Setup,
+		logpushjob.Setup,
+		addressmap.Setup,
+		byoipprefix.Setup,
+		callssfuapp.Setup,
+		callsturnapp.Setup,
+		cloudconnectorrules.Setup,
+		cloudforceonerequest.Setup,
+		cloudforceonerequestasset.Setup,
+		cloudforceonerequestmessage.Setup,
+		cloudforceonerequestpriority.Setup,
+		contentscanning.Setup,
+		contentscanningexpression.Setup,
+		d1database.Setup,
+		hyperdriveconfig.Setup,
+		observatoryscheduledtest.Setup,
+		queue.Setup,
+		queueconsumer.Setup,
+		regionalhostname.Setup,
+		snippet.Setup,
+		snippetrules.Setup,
+		turnstilewidget.Setup,
+		web3hostname.Setup,
+		webanalyticsrule.Setup,
+		webanalyticssite.Setup,
+		notificationpolicy.Setup,
+		notificationpolicywebhooks.Setup,
 		providerconfig.Setup,
+		r2bucket.Setup,
+		r2bucketcors.Setup,
+		r2bucketlifecycle.Setup,
+		r2bucketlock.Setup,
+		r2bucketsippy.Setup,
+		r2customdomain.Setup,
+		r2manageddomain.Setup,
+		spectrumapplication.Setup,
+		stream.Setup,
+		streamaudiotrack.Setup,
+		streamdownload.Setup,
+		streamkey.Setup,
+		streamliveinput.Setup,
+		streamwatermark.Setup,
+		streamwebhook.Setup,
+		waitingroom.Setup,
+		waitingroomevent.Setup,
+		waitingroomrules.Setup,
+		waitingroomsettings.Setup,
+		pagesdomain.Setup,
+		pagesproject.Setup,
+		workerskv.Setup,
+		workerskvnamespace.Setup,
+		workersscript.Setup,
+		zerotrustaccessshortlivedcertificate.Setup,
+		zerotrustdevicemanagednetworks.Setup,
+		zerotrustdevicepostureintegration.Setup,
+		zerotrustdeviceposturerule.Setup,
+		zerotrustdextest.Setup,
+		zerotrustdlpcustomentry.Setup,
+		zerotrustdlpcustomprofile.Setup,
+		zerotrustdlpentry.Setup,
+		zerotrustgatewaycertificate.Setup,
+		zerotrustgatewaypolicy.Setup,
+		zerotrustgatewaysettings.Setup,
+		zerotrustlist.Setup,
+		zerotrustriskbehavior.Setup,
+		zerotrustriskscoringintegration.Setup,
+		zerotrusttunnelcloudflared.Setup,
+		zerotrusttunnelcloudflaredconfig.Setup,
+		zone.Setup,
+		zonecachereserve.Setup,
+		zonecachevariants.Setup,
+		zonednssec.Setup,
+		zonehold.Setup,
+		zonelockdown.Setup,
+		zonesetting.Setup,
 	} {
 		if err := setup(mgr, o); err != nil {
 			return err
@@ -31,8 +275,130 @@ func Setup(mgr ctrl.Manager, o controller.Options) error {
 // the supplied manager gated.
 func SetupGated(mgr ctrl.Manager, o controller.Options) error {
 	for _, setup := range []func(ctrl.Manager, controller.Options) error{
-		resource.SetupGated,
+		accessrule.SetupGated,
+		account.SetupGated,
+		accounttoken.SetupGated,
+		apitoken.SetupGated,
+		member.SetupGated,
+		apishield.SetupGated,
+		apishieldoperation.SetupGated,
+		apishieldoperationschemavalidationsettings.SetupGated,
+		apishieldschema.SetupGated,
+		apishieldschemavalidationsettings.SetupGated,
+		magicwangretunnel.SetupGated,
+		magicwanipsectunnel.SetupGated,
+		magicwanstaticroute.SetupGated,
+		regionaltieredcache.SetupGated,
+		tieredcache.SetupGated,
+		authenticatedoriginpulls.SetupGated,
+		authenticatedoriginpullscertificate.SetupGated,
+		certificatepack.SetupGated,
+		customhostname.SetupGated,
+		customhostnamefallbackorigin.SetupGated,
+		customssl.SetupGated,
+		hostnametlssetting.SetupGated,
+		keylesscertificate.SetupGated,
+		mtlscertificate.SetupGated,
+		origincacertificate.SetupGated,
+		totaltls.SetupGated,
+		dnsfirewall.SetupGated,
+		dnsrecord.SetupGated,
+		emailroutingaddress.SetupGated,
+		emailroutingcatchall.SetupGated,
+		emailroutingdns.SetupGated,
+		emailroutingrule.SetupGated,
+		emailroutingsettings.SetupGated,
+		botmanagement.SetupGated,
+		filter.SetupGated,
+		firewallrule.SetupGated,
+		leakedcredentialcheck.SetupGated,
+		leakedcredentialcheckrule.SetupGated,
+		pagerule.SetupGated,
+		ratelimit.SetupGated,
+		ruleset.SetupGated,
+		urlnormalizationsettings.SetupGated,
+		useragentblockingrule.SetupGated,
+		healthcheck.SetupGated,
+		list.SetupGated,
+		listitem.SetupGated,
+		loadbalancer.SetupGated,
+		loadbalancermonitor.SetupGated,
+		loadbalancerpool.SetupGated,
+		logpullretention.SetupGated,
+		logpushjob.SetupGated,
+		addressmap.SetupGated,
+		byoipprefix.SetupGated,
+		callssfuapp.SetupGated,
+		callsturnapp.SetupGated,
+		cloudconnectorrules.SetupGated,
+		cloudforceonerequest.SetupGated,
+		cloudforceonerequestasset.SetupGated,
+		cloudforceonerequestmessage.SetupGated,
+		cloudforceonerequestpriority.SetupGated,
+		contentscanning.SetupGated,
+		contentscanningexpression.SetupGated,
+		d1database.SetupGated,
+		hyperdriveconfig.SetupGated,
+		observatoryscheduledtest.SetupGated,
+		queue.SetupGated,
+		queueconsumer.SetupGated,
+		regionalhostname.SetupGated,
+		snippet.SetupGated,
+		snippetrules.SetupGated,
+		turnstilewidget.SetupGated,
+		web3hostname.SetupGated,
+		webanalyticsrule.SetupGated,
+		webanalyticssite.SetupGated,
+		notificationpolicy.SetupGated,
+		notificationpolicywebhooks.SetupGated,
 		providerconfig.SetupGated,
+		r2bucket.SetupGated,
+		r2bucketcors.SetupGated,
+		r2bucketlifecycle.SetupGated,
+		r2bucketlock.SetupGated,
+		r2bucketsippy.SetupGated,
+		r2customdomain.SetupGated,
+		r2manageddomain.SetupGated,
+		spectrumapplication.SetupGated,
+		stream.SetupGated,
+		streamaudiotrack.SetupGated,
+		streamdownload.SetupGated,
+		streamkey.SetupGated,
+		streamliveinput.SetupGated,
+		streamwatermark.SetupGated,
+		streamwebhook.SetupGated,
+		waitingroom.SetupGated,
+		waitingroomevent.SetupGated,
+		waitingroomrules.SetupGated,
+		waitingroomsettings.SetupGated,
+		pagesdomain.SetupGated,
+		pagesproject.SetupGated,
+		workerskv.SetupGated,
+		workerskvnamespace.SetupGated,
+		workersscript.SetupGated,
+		zerotrustaccessshortlivedcertificate.SetupGated,
+		zerotrustdevicemanagednetworks.SetupGated,
+		zerotrustdevicepostureintegration.SetupGated,
+		zerotrustdeviceposturerule.SetupGated,
+		zerotrustdextest.SetupGated,
+		zerotrustdlpcustomentry.SetupGated,
+		zerotrustdlpcustomprofile.SetupGated,
+		zerotrustdlpentry.SetupGated,
+		zerotrustgatewaycertificate.SetupGated,
+		zerotrustgatewaypolicy.SetupGated,
+		zerotrustgatewaysettings.SetupGated,
+		zerotrustlist.SetupGated,
+		zerotrustriskbehavior.SetupGated,
+		zerotrustriskscoringintegration.SetupGated,
+		zerotrusttunnelcloudflared.SetupGated,
+		zerotrusttunnelcloudflaredconfig.SetupGated,
+		zone.SetupGated,
+		zonecachereserve.SetupGated,
+		zonecachevariants.SetupGated,
+		zonednssec.SetupGated,
+		zonehold.SetupGated,
+		zonelockdown.SetupGated,
+		zonesetting.SetupGated,
 	} {
 		if err := setup(mgr, o); err != nil {
 			return err

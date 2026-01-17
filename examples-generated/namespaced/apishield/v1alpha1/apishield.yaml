@@ -1,0 +1,17 @@
+apiVersion: apishield.cloudflare.m.cloudflare.com/v1alpha1
+kind: APIShield
+metadata:
+  annotations:
+    meta.upbound.io/example-id: apishield/v1alpha1/apishield
+  labels:
+    testing.upbound.io/example-name: example_api_shield
+  name: example-api-shield
+  namespace: crossplane-system
+spec:
+  forProvider:
+    authIdCharacteristics:
+    - name: authorization
+      type: header
+    zoneIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example

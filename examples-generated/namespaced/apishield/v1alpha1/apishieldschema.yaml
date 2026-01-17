@@ -1,0 +1,18 @@
+apiVersion: apishield.cloudflare.m.cloudflare.com/v1alpha1
+kind: APIShieldSchema
+metadata:
+  annotations:
+    meta.upbound.io/example-id: apishield/v1alpha1/apishieldschema
+  labels:
+    testing.upbound.io/example-name: example_api_shield_schema
+  name: example-api-shield-schema
+  namespace: crossplane-system
+spec:
+  forProvider:
+    file: null
+    kind: openapi_v3
+    name: petstore schema
+    validationEnabled: "true"
+    zoneIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example

@@ -1,0 +1,24 @@
+apiVersion: zerotrust.cloudflare.m.cloudflare.com/v1alpha1
+kind: ZeroTrustDEXTest
+metadata:
+  annotations:
+    meta.upbound.io/example-id: zerotrust/v1alpha1/zerotrustdextest
+  labels:
+    testing.upbound.io/example-name: example_zero_trust_dex_test
+  name: example-zero-trust-dex-test
+  namespace: crossplane-system
+spec:
+  forProvider:
+    accountIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example
+    data:
+      host: https://dash.cloudflare.com
+      kind: http
+      method: GET
+    description: Checks the dash endpoint every 30 minutes
+    enabled: true
+    interval: 30m
+    name: HTTP dash health check
+    targetPolicies:
+    - id: id

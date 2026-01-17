@@ -1,0 +1,25 @@
+apiVersion: misc.cloudflare.m.cloudflare.com/v1alpha1
+kind: Snippet
+metadata:
+  annotations:
+    meta.upbound.io/example-id: misc/v1alpha1/snippet
+  labels:
+    testing.upbound.io/example-name: example_snippet
+  name: example-snippet
+  namespace: crossplane-system
+spec:
+  forProvider:
+    files:
+    - content: |
+        export default {
+          async fetch(request) {
+            return new Response('Hello, World!');
+          }
+        }
+      name: main.js
+    metadata:
+      mainModule: main.js
+    snippetName: my_snippet
+    zoneIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example

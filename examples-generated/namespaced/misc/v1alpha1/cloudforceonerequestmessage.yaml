@@ -1,0 +1,16 @@
+apiVersion: misc.cloudflare.m.cloudflare.com/v1alpha1
+kind: CloudforceOneRequestMessage
+metadata:
+  annotations:
+    meta.upbound.io/example-id: misc/v1alpha1/cloudforceonerequestmessage
+  labels:
+    testing.upbound.io/example-name: example_cloudforce_one_request_message
+  name: example-cloudforce-one-request-message
+  namespace: crossplane-system
+spec:
+  forProvider:
+    accountIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example
+    content: Can you elaborate on the type of DoS that occurred?
+    requestId: f174e90a-fafe-4643-bbbc-4a0ed4fc8415

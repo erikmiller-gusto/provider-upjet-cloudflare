@@ -1,0 +1,17 @@
+apiVersion: zerotrust.cloudflare.crossplane.io/v1alpha1
+kind: ZeroTrustRiskBehavior
+metadata:
+  annotations:
+    meta.upbound.io/example-id: zerotrust/v1alpha1/zerotrustriskbehavior
+  labels:
+    testing.upbound.io/example-name: example_zero_trust_risk_behavior
+  name: example-zero-trust-risk-behavior
+spec:
+  forProvider:
+    accountIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example
+    behaviors:
+      foo:
+        enabled: true
+        risk_level: low

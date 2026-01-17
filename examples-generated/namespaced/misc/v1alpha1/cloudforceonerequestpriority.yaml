@@ -1,0 +1,20 @@
+apiVersion: misc.cloudflare.m.cloudflare.com/v1alpha1
+kind: CloudforceOneRequestPriority
+metadata:
+  annotations:
+    meta.upbound.io/example-id: misc/v1alpha1/cloudforceonerequestpriority
+  labels:
+    testing.upbound.io/example-name: example_cloudforce_one_request_priority
+  name: example-cloudforce-one-request-priority
+  namespace: crossplane-system
+spec:
+  forProvider:
+    accountIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example
+    labels:
+    - DoS
+    - CVE
+    priority: 1
+    requirement: DoS attacks carried out by CVEs
+    tlp: clear

@@ -1,0 +1,18 @@
+apiVersion: workers.cloudflare.m.cloudflare.com/v1alpha1
+kind: PagesDomain
+metadata:
+  annotations:
+    meta.upbound.io/example-id: workers/v1alpha1/pagesdomain
+  labels:
+    testing.upbound.io/example-name: example_pages_domain
+  name: example-pages-domain
+  namespace: crossplane-system
+spec:
+  forProvider:
+    accountIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example
+    name: this-is-my-domain-01.com
+    projectNameSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example

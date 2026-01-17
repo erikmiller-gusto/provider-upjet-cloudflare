@@ -1,0 +1,25 @@
+apiVersion: stream.cloudflare.m.cloudflare.com/v1alpha1
+kind: StreamLiveInput
+metadata:
+  annotations:
+    meta.upbound.io/example-id: stream/v1alpha1/streamliveinput
+  labels:
+    testing.upbound.io/example-name: example_stream_live_input
+  name: example-stream-live-input
+  namespace: crossplane-system
+spec:
+  forProvider:
+    accountIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example
+    defaultCreator: defaultCreator
+    deleteRecordingAfterDays: 45
+    meta:
+      name: test stream 1
+    recording:
+      allowedOrigins:
+      - example.com
+      hideLiveViewerCount: false
+      mode: "off"
+      requireSignedUrls: false
+      timeoutSeconds: 0

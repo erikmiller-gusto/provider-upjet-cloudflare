@@ -1,0 +1,18 @@
+apiVersion: certificate.cloudflare.crossplane.io/v1alpha1
+kind: HostnameTLSSetting
+metadata:
+  annotations:
+    meta.upbound.io/example-id: certificate/v1alpha1/hostnametlssetting
+  labels:
+    testing.upbound.io/example-name: example_hostname_tls_setting
+  name: example-hostname-tls-setting
+spec:
+  forProvider:
+    hostname: app.example.com
+    settingId: ciphers
+    value:
+    - ECDHE-RSA-AES128-GCM-SHA256
+    - AES128-GCM-SHA256
+    zoneIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example

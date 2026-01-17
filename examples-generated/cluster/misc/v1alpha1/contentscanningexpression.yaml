@@ -1,0 +1,15 @@
+apiVersion: misc.cloudflare.crossplane.io/v1alpha1
+kind: ContentScanningExpression
+metadata:
+  annotations:
+    meta.upbound.io/example-id: misc/v1alpha1/contentscanningexpression
+  labels:
+    testing.upbound.io/example-name: example_content_scanning_expression
+  name: example-content-scanning-expression
+spec:
+  forProvider:
+    body:
+    - payload: lookup_json_string(http.request.body.raw, "file")
+    zoneIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example

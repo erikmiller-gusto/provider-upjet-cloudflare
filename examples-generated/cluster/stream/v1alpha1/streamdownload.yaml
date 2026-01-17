@@ -1,0 +1,14 @@
+apiVersion: stream.cloudflare.crossplane.io/v1alpha1
+kind: StreamDownload
+metadata:
+  annotations:
+    meta.upbound.io/example-id: stream/v1alpha1/streamdownload
+  labels:
+    testing.upbound.io/example-name: example_stream_download
+  name: example-stream-download
+spec:
+  forProvider:
+    accountIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example
+    identifier: ea95132c15732412d22c1476fa83f27a

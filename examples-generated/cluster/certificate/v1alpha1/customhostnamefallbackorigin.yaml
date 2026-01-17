@@ -1,0 +1,14 @@
+apiVersion: certificate.cloudflare.crossplane.io/v1alpha1
+kind: CustomHostnameFallbackOrigin
+metadata:
+  annotations:
+    meta.upbound.io/example-id: certificate/v1alpha1/customhostnamefallbackorigin
+  labels:
+    testing.upbound.io/example-name: example_custom_hostname_fallback_origin
+  name: example-custom-hostname-fallback-origin
+spec:
+  forProvider:
+    origin: fallback.example.com
+    zoneIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example

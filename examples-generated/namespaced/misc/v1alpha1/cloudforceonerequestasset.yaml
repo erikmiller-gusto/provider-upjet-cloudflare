@@ -1,0 +1,17 @@
+apiVersion: misc.cloudflare.m.cloudflare.com/v1alpha1
+kind: CloudforceOneRequestAsset
+metadata:
+  annotations:
+    meta.upbound.io/example-id: misc/v1alpha1/cloudforceonerequestasset
+  labels:
+    testing.upbound.io/example-name: example_cloudforce_one_request_asset
+  name: example-cloudforce-one-request-asset
+  namespace: crossplane-system
+spec:
+  forProvider:
+    accountIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example
+    page: 0
+    perPage: 10
+    requestId: f174e90a-fafe-4643-bbbc-4a0ed4fc8415

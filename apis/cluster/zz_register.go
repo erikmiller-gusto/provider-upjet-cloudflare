@@ -10,17 +10,57 @@ package cluster
 import (
 	"k8s.io/apimachinery/pkg/runtime"
 
-	v1alpha1 "github.com/crossplane/upjet-provider-template/apis/cluster/null/v1alpha1"
-	v1alpha1cluster "github.com/crossplane/upjet-provider-template/apis/cluster/v1alpha1"
-	v1beta1 "github.com/crossplane/upjet-provider-template/apis/cluster/v1beta1"
+	v1alpha1 "github.com/crossplane-contrib/provider-upjet-cloudflare/apis/cluster/access/v1alpha1"
+	v1alpha1account "github.com/crossplane-contrib/provider-upjet-cloudflare/apis/cluster/account/v1alpha1"
+	v1alpha1apishield "github.com/crossplane-contrib/provider-upjet-cloudflare/apis/cluster/apishield/v1alpha1"
+	v1alpha1argo "github.com/crossplane-contrib/provider-upjet-cloudflare/apis/cluster/argo/v1alpha1"
+	v1alpha1certificate "github.com/crossplane-contrib/provider-upjet-cloudflare/apis/cluster/certificate/v1alpha1"
+	v1alpha1dns "github.com/crossplane-contrib/provider-upjet-cloudflare/apis/cluster/dns/v1alpha1"
+	v1alpha1email "github.com/crossplane-contrib/provider-upjet-cloudflare/apis/cluster/email/v1alpha1"
+	v1alpha1firewall "github.com/crossplane-contrib/provider-upjet-cloudflare/apis/cluster/firewall/v1alpha1"
+	v1alpha1healthcheck "github.com/crossplane-contrib/provider-upjet-cloudflare/apis/cluster/healthcheck/v1alpha1"
+	v1alpha1list "github.com/crossplane-contrib/provider-upjet-cloudflare/apis/cluster/list/v1alpha1"
+	v1alpha1loadbalancer "github.com/crossplane-contrib/provider-upjet-cloudflare/apis/cluster/loadbalancer/v1alpha1"
+	v1alpha1logpush "github.com/crossplane-contrib/provider-upjet-cloudflare/apis/cluster/logpush/v1alpha1"
+	v1alpha1misc "github.com/crossplane-contrib/provider-upjet-cloudflare/apis/cluster/misc/v1alpha1"
+	v1alpha1notification "github.com/crossplane-contrib/provider-upjet-cloudflare/apis/cluster/notification/v1alpha1"
+	v1alpha1r2 "github.com/crossplane-contrib/provider-upjet-cloudflare/apis/cluster/r2/v1alpha1"
+	v1alpha1spectrum "github.com/crossplane-contrib/provider-upjet-cloudflare/apis/cluster/spectrum/v1alpha1"
+	v1alpha1stream "github.com/crossplane-contrib/provider-upjet-cloudflare/apis/cluster/stream/v1alpha1"
+	v1alpha1cluster "github.com/crossplane-contrib/provider-upjet-cloudflare/apis/cluster/v1alpha1"
+	v1beta1 "github.com/crossplane-contrib/provider-upjet-cloudflare/apis/cluster/v1beta1"
+	v1alpha1waitingroom "github.com/crossplane-contrib/provider-upjet-cloudflare/apis/cluster/waitingroom/v1alpha1"
+	v1alpha1workers "github.com/crossplane-contrib/provider-upjet-cloudflare/apis/cluster/workers/v1alpha1"
+	v1alpha1zerotrust "github.com/crossplane-contrib/provider-upjet-cloudflare/apis/cluster/zerotrust/v1alpha1"
+	v1alpha1zone "github.com/crossplane-contrib/provider-upjet-cloudflare/apis/cluster/zone/v1alpha1"
 )
 
 func init() {
 	// Register the types with the Scheme so the components can map objects to GroupVersionKinds and back
 	AddToSchemes = append(AddToSchemes,
 		v1alpha1.SchemeBuilder.AddToScheme,
+		v1alpha1account.SchemeBuilder.AddToScheme,
+		v1alpha1apishield.SchemeBuilder.AddToScheme,
+		v1alpha1argo.SchemeBuilder.AddToScheme,
+		v1alpha1certificate.SchemeBuilder.AddToScheme,
+		v1alpha1dns.SchemeBuilder.AddToScheme,
+		v1alpha1email.SchemeBuilder.AddToScheme,
+		v1alpha1firewall.SchemeBuilder.AddToScheme,
+		v1alpha1healthcheck.SchemeBuilder.AddToScheme,
+		v1alpha1list.SchemeBuilder.AddToScheme,
+		v1alpha1loadbalancer.SchemeBuilder.AddToScheme,
+		v1alpha1logpush.SchemeBuilder.AddToScheme,
+		v1alpha1misc.SchemeBuilder.AddToScheme,
+		v1alpha1notification.SchemeBuilder.AddToScheme,
+		v1alpha1r2.SchemeBuilder.AddToScheme,
+		v1alpha1spectrum.SchemeBuilder.AddToScheme,
+		v1alpha1stream.SchemeBuilder.AddToScheme,
 		v1alpha1cluster.SchemeBuilder.AddToScheme,
 		v1beta1.SchemeBuilder.AddToScheme,
+		v1alpha1waitingroom.SchemeBuilder.AddToScheme,
+		v1alpha1workers.SchemeBuilder.AddToScheme,
+		v1alpha1zerotrust.SchemeBuilder.AddToScheme,
+		v1alpha1zone.SchemeBuilder.AddToScheme,
 	)
 }
 

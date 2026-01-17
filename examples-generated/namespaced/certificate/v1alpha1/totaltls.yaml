@@ -1,0 +1,16 @@
+apiVersion: certificate.cloudflare.m.cloudflare.com/v1alpha1
+kind: TotalTLS
+metadata:
+  annotations:
+    meta.upbound.io/example-id: certificate/v1alpha1/totaltls
+  labels:
+    testing.upbound.io/example-name: example_total_tls
+  name: example-total-tls
+  namespace: crossplane-system
+spec:
+  forProvider:
+    certificateAuthority: google
+    enabled: true
+    zoneIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example

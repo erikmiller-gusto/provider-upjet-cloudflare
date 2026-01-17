@@ -1,0 +1,19 @@
+apiVersion: workers.cloudflare.crossplane.io/v1alpha1
+kind: WorkersKV
+metadata:
+  annotations:
+    meta.upbound.io/example-id: workers/v1alpha1/workerskv
+  labels:
+    testing.upbound.io/example-name: example_workers_kv
+  name: example-workers-kv
+spec:
+  forProvider:
+    accountIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example
+    keyName: My-Key
+    metadata: {}
+    namespaceIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example
+    value: Some Value

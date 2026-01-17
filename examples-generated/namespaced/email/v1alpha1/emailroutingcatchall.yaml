@@ -1,0 +1,22 @@
+apiVersion: email.cloudflare.m.cloudflare.com/v1alpha1
+kind: EmailRoutingCatchAll
+metadata:
+  annotations:
+    meta.upbound.io/example-id: email/v1alpha1/emailroutingcatchall
+  labels:
+    testing.upbound.io/example-name: example_email_routing_catch_all
+  name: example-email-routing-catch-all
+  namespace: crossplane-system
+spec:
+  forProvider:
+    actions:
+    - type: forward
+      value:
+      - destinationaddress@example.net
+    enabled: true
+    matchers:
+    - type: all
+    name: Send to user@example.net rule.
+    zoneIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example

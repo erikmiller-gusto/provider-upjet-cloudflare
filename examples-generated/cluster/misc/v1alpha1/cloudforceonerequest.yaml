@@ -1,0 +1,18 @@
+apiVersion: misc.cloudflare.crossplane.io/v1alpha1
+kind: CloudforceOneRequest
+metadata:
+  annotations:
+    meta.upbound.io/example-id: misc/v1alpha1/cloudforceonerequest
+  labels:
+    testing.upbound.io/example-name: example_cloudforce_one_request
+  name: example-cloudforce-one-request
+spec:
+  forProvider:
+    accountIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example
+    content: What regions were most effected by the recent DoS?
+    priority: routine
+    requestType: Victomology
+    summary: DoS attack
+    tlp: clear

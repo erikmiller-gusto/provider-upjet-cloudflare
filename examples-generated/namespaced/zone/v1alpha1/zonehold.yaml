@@ -1,0 +1,14 @@
+apiVersion: zone.cloudflare.m.cloudflare.com/v1alpha1
+kind: ZoneHold
+metadata:
+  annotations:
+    meta.upbound.io/example-id: zone/v1alpha1/zonehold
+  labels:
+    testing.upbound.io/example-name: example_zone_hold
+  name: example-zone-hold
+  namespace: crossplane-system
+spec:
+  forProvider:
+    zoneIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example

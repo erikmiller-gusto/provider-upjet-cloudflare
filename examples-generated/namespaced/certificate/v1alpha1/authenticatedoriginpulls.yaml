@@ -1,0 +1,18 @@
+apiVersion: certificate.cloudflare.m.cloudflare.com/v1alpha1
+kind: AuthenticatedOriginPulls
+metadata:
+  annotations:
+    meta.upbound.io/example-id: certificate/v1alpha1/authenticatedoriginpulls
+  labels:
+    testing.upbound.io/example-name: example_authenticated_origin_pulls
+  name: example-authenticated-origin-pulls
+  namespace: crossplane-system
+spec:
+  forProvider:
+    config:
+    - certId: 2458ce5a-0c35-4c7f-82c7-8e9487d3ff60
+      enabled: true
+      hostname: app.example.com
+    zoneIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example

@@ -1,0 +1,14 @@
+apiVersion: misc.cloudflare.crossplane.io/v1alpha1
+kind: ContentScanning
+metadata:
+  annotations:
+    meta.upbound.io/example-id: misc/v1alpha1/contentscanning
+  labels:
+    testing.upbound.io/example-name: example_content_scanning
+  name: example-content-scanning
+spec:
+  forProvider:
+    value: enabled
+    zoneIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example

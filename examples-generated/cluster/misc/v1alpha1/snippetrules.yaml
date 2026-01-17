@@ -1,0 +1,18 @@
+apiVersion: misc.cloudflare.crossplane.io/v1alpha1
+kind: SnippetRules
+metadata:
+  annotations:
+    meta.upbound.io/example-id: misc/v1alpha1/snippetrules
+  labels:
+    testing.upbound.io/example-name: example_snippet_rules
+  name: example-snippet-rules
+spec:
+  forProvider:
+    rules:
+    - description: Execute my_snippet when IP address is 1.1.1.1.
+      enabled: true
+      expression: ip.src eq 1.1.1.1
+      snippetName: my_snippet
+    zoneIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example

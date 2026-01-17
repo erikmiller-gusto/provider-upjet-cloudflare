@@ -1,0 +1,15 @@
+apiVersion: stream.cloudflare.m.cloudflare.com/v1alpha1
+kind: StreamWebhook
+metadata:
+  annotations:
+    meta.upbound.io/example-id: stream/v1alpha1/streamwebhook
+  labels:
+    testing.upbound.io/example-name: example_stream_webhook
+  name: example-stream-webhook
+  namespace: crossplane-system
+spec:
+  forProvider:
+    accountIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example
+    notificationUrl: https://example.com

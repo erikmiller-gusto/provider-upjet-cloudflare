@@ -1,0 +1,17 @@
+apiVersion: misc.cloudflare.crossplane.io/v1alpha1
+kind: Web3Hostname
+metadata:
+  annotations:
+    meta.upbound.io/example-id: misc/v1alpha1/web3hostname
+  labels:
+    testing.upbound.io/example-name: example_web3_hostname
+  name: example-web3-hostname
+spec:
+  forProvider:
+    description: This is my IPFS gateway.
+    dnslink: /ipns/onboarding.ipfs.cloudflare.com
+    name: gateway.example.com
+    target: ipfs
+    zoneIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example

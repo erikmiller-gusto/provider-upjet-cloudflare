@@ -1,0 +1,15 @@
+apiVersion: logpush.cloudflare.m.cloudflare.com/v1alpha1
+kind: LogpullRetention
+metadata:
+  annotations:
+    meta.upbound.io/example-id: logpush/v1alpha1/logpullretention
+  labels:
+    testing.upbound.io/example-name: example_logpull_retention
+  name: example-logpull-retention
+  namespace: crossplane-system
+spec:
+  forProvider:
+    flag: true
+    zoneIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example

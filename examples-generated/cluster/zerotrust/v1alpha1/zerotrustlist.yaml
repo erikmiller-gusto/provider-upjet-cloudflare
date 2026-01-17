@@ -1,0 +1,19 @@
+apiVersion: zerotrust.cloudflare.crossplane.io/v1alpha1
+kind: ZeroTrustList
+metadata:
+  annotations:
+    meta.upbound.io/example-id: zerotrust/v1alpha1/zerotrustlist
+  labels:
+    testing.upbound.io/example-name: example_zero_trust_list
+  name: example-zero-trust-list
+spec:
+  forProvider:
+    accountIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example
+    description: The serial numbers for administrators
+    items:
+    - description: Austin office IP
+      value: 8GE8721REF
+    name: Admin Serial Numbers
+    type: SERIAL

@@ -1,0 +1,18 @@
+apiVersion: stream.cloudflare.m.cloudflare.com/v1alpha1
+kind: StreamAudioTrack
+metadata:
+  annotations:
+    meta.upbound.io/example-id: stream/v1alpha1/streamaudiotrack
+  labels:
+    testing.upbound.io/example-name: example_stream_audio_track
+  name: example-stream-audio-track
+  namespace: crossplane-system
+spec:
+  forProvider:
+    accountIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example
+    audioIdentifier: ea95132c15732412d22c1476fa83f27a
+    default: true
+    identifier: ea95132c15732412d22c1476fa83f27a
+    label: director commentary

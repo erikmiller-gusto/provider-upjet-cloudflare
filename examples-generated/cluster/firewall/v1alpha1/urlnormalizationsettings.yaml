@@ -1,0 +1,15 @@
+apiVersion: firewall.cloudflare.crossplane.io/v1alpha1
+kind: URLNormalizationSettings
+metadata:
+  annotations:
+    meta.upbound.io/example-id: firewall/v1alpha1/urlnormalizationsettings
+  labels:
+    testing.upbound.io/example-name: example_url_normalization_settings
+  name: example-url-normalization-settings
+spec:
+  forProvider:
+    scope: incoming
+    type: cloudflare
+    zoneIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example

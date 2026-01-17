@@ -1,0 +1,14 @@
+apiVersion: waitingroom.cloudflare.crossplane.io/v1alpha1
+kind: WaitingRoomSettings
+metadata:
+  annotations:
+    meta.upbound.io/example-id: waitingroom/v1alpha1/waitingroomsettings
+  labels:
+    testing.upbound.io/example-name: example_waiting_room_settings
+  name: example-waiting-room-settings
+spec:
+  forProvider:
+    searchEngineCrawlerBypass: true
+    zoneIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example

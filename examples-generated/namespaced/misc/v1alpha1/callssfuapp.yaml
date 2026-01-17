@@ -1,0 +1,15 @@
+apiVersion: misc.cloudflare.m.cloudflare.com/v1alpha1
+kind: CallsSFUApp
+metadata:
+  annotations:
+    meta.upbound.io/example-id: misc/v1alpha1/callssfuapp
+  labels:
+    testing.upbound.io/example-name: example_calls_sfu_app
+  name: example-calls-sfu-app
+  namespace: crossplane-system
+spec:
+  forProvider:
+    accountIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example
+    name: production-realtime-app

@@ -1,0 +1,22 @@
+apiVersion: waitingroom.cloudflare.m.cloudflare.com/v1alpha1
+kind: WaitingRoomRules
+metadata:
+  annotations:
+    meta.upbound.io/example-id: waitingroom/v1alpha1/waitingroomrules
+  labels:
+    testing.upbound.io/example-name: example_waiting_room_rules
+  name: example-waiting-room-rules
+  namespace: crossplane-system
+spec:
+  forProvider:
+    rules:
+    - action: bypass_waiting_room
+      description: allow all traffic from 10.20.30.40
+      enabled: true
+      expression: ip.src in {10.20.30.40}
+    waitingRoomIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example
+    zoneIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example
